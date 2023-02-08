@@ -5,6 +5,7 @@ import platform
 import colorswatch as cs
 import pyautogui
 from enum import Enum
+import character
 
 class GameState(Enum):
     # Will contain game states enumerated
@@ -39,6 +40,8 @@ elif platform.system() == "Linux":
     CURRENT_OS = OSState.LINUX
 
 
+player = character.Character(WINDOW, SCREEN_X / 2, SCREEN_Y / 2, isPlayer = True)
+
 
 def run_game():
 
@@ -46,8 +49,13 @@ def run_game():
 
 
     def update():
+        player.update()
+
         pygame.display.update()
         WINDOW.fill(REFRESH_COLOR)
+
+    def draw():
+        player.draw()
 
 
     while inGameLoop:
@@ -61,7 +69,7 @@ def run_game():
         if keyboard.is_pressed('escape'):
             inGameLoop = False
 
-
+        draw()
         update()
 
 
