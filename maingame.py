@@ -30,7 +30,6 @@ FPS = 60
 CLOCK = pygame.time.Clock()
 
 REFRESH_COLOR = cs.black["pygame"]
-
 # Will be useful for distros
 if platform.system() == "Windows":
     CURRENT_OS = OSState.WINDOWS
@@ -40,7 +39,7 @@ elif platform.system() == "Linux":
     CURRENT_OS = OSState.LINUX
 
 
-player = character.Character(WINDOW, SCREEN_X / 2, SCREEN_Y / 2, isPlayer = True)
+player = actor.Actor(WINDOW, SCREEN_X / 2 , SCREEN_Y / 2, isPlayer = True)
 
 
 def run_game():
