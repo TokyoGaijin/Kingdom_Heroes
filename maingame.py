@@ -48,6 +48,7 @@ def run_game():
     inGameLoop = True
 
 
+
     def update():
         player.update()
 
@@ -61,6 +62,7 @@ def run_game():
     while inGameLoop:
 
         CLOCK.tick(FPS)
+
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
