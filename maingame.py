@@ -6,6 +6,7 @@ import colorswatch as cs
 import pyautogui
 from enum import Enum
 import actor
+import level
 
 class GameState(Enum):
     # Will contain game states enumerated
@@ -40,20 +41,24 @@ elif platform.system() == "Linux":
 
 
 player = actor.Actor(WINDOW, SCREEN_X / 2 , SCREEN_Y / 2, isPlayer = True)
-
+current_level = level.Level(WINDOW, 100, 100)
 
 def run_game():
 
     inGameLoop = True
+    current_level.build_level(0)
 
 
     def update():
         player.update()
 
+        # TODO: Add collisions for the wall vs. player bounding boxes
+
         pygame.display.update()
         WINDOW.fill(REFRESH_COLOR)
 
     def draw():
+        current_level.draw()
         player.draw()
 
 

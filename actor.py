@@ -3,7 +3,9 @@ import keyboard
 from enum import Enum
 import os
 
-# Do a useful enum state here
+# TODO: Do a useful enum state here
+
+# TODO: Create the males for each job, females for each job, separate races and job sprites, etc.
 
 class Actor(object):
     def __init__(self, surface, posX, posY, default_sprite = os.path.join("sprites/human", "female_walk_down_1.png"), gender = "female", isPlayer = False):
@@ -16,6 +18,7 @@ class Actor(object):
         self.isMoving = False
         self.gender = gender
         self.current_frame = 0
+        self.bounding_block = pygame.Rect(self.actor_sprite.get_width(), self.actor_sprite.get_height(), self.posX, self.posY)
 
 
         # vital stats
@@ -26,10 +29,15 @@ class Actor(object):
         self.walk_up = [pygame.image.load(os.path.join("sprites/human", f"{self.gender}_walk_up_{i}.png")) for i in range(0, 3)]
         self.walk_down = [pygame.image.load(os.path.join("sprites/human", f"{self.gender}_walk_down_{i}.png")) for i in range(0, 3)]
 
+        # TODO: Create conditions for actor facing if isPlayer
+        # TODO: Create enemy conditions for battle
+        # TODO: Create an inventory array/list
+
+
+    # TODO: Create a character creation function to be used in-game
+
     def anim_actor(self, direction):
         # need the species, gender and direction for this to work
-
-
         animation_duration = 600 # matches 60 FPS in a multiple of 3
 
         for i in range(0, animation_duration):
@@ -62,6 +70,9 @@ class Actor(object):
                 self.posX -= self.speed
             if direction == "right":
                 self.posX += self.speed
+
+        self.bounding_block.x = self.posX
+        self.bounding_block.y = self.posY
 
 
 
