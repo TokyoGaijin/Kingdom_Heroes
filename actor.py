@@ -12,9 +12,8 @@ class Actor(object):
         self.posY = posY
         self.actor_sprite = pygame.image.load(default_sprite)
         self.isPlayer = isPlayer
+        self.hotkeys = ['up', 'down', 'left', 'right', 'a', 's', 'd', 'w']
         self.isMoving = False # to be used with motion detection
-        self.hotkeys = ['up_arrow', 'donw_arrow', 'left_arrow', 'right_arrow', 'a', 's', 'd', 'w']
-
 
         # vital stats
         self.speed = 5
@@ -34,27 +33,39 @@ class Actor(object):
             if direction == "right":
                 self.posX += self.speed
 
+
+
+    def on_release_movekey(self, key):
+        for keys in self.hotkeys:
+            if key.name == keys:
+                self.isMoving = False
+
+
     def controller(self):
         if keyboard.is_pressed('left_arrow') or keyboard.is_pressed('a'):
+            self.isMoving = True
             self.move("left")
         if keyboard.is_pressed('right_arrow') or keyboard.is_pressed('d'):
+            self.isMoving = True
             self.move("right")
         if keyboard.is_pressed('up_arrow') or keyboard.is_pressed('w'):
+            self.isMoving = True
             self.move("up")
         if keyboard.is_pressed('down_arrow') or keyboard.is_pressed('s'):
+            self.isMoving = True
             self.move("down")
 
-        for key in self.hotkeys:
-            if keyboard.release(self.hotkeys[key]):
-                self.isMoving = False
-            elif keyboard.is_pressed(self.hotkys[key]):
-                self.isMoving = True
+        keyboard.on_release(self.on_release_movekey)
+
+
+
 
 
 
     def update(self):
+        print(self.isMoving)
         if self.isPlayer:
             self.controller()
 
     def draw(self):
-        pass
+        self.surface.blit(self.actor_sprite, (self.posX, self.posY))

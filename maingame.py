@@ -5,7 +5,7 @@ import platform
 import colorswatch as cs
 import pyautogui
 from enum import Enum
-import character
+import actor
 
 class GameState(Enum):
     # Will contain game states enumerated
@@ -48,7 +48,6 @@ def run_game():
     inGameLoop = True
 
 
-
     def update():
         player.update()
 
@@ -62,7 +61,6 @@ def run_game():
     while inGameLoop:
 
         CLOCK.tick(FPS)
-
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
