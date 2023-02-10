@@ -3,7 +3,7 @@ import keyboard
 import os
 import platform
 import colorswatch as cs
-import pyautogui
+# import pyautogui
 from enum import Enum
 import actor
 import level
@@ -19,8 +19,21 @@ class OSState(Enum):
 
 pygame.init()
 
-SCREEN_X = 1280
-SCREEN_Y = 800
+# Will be useful for distros
+if platform.system() == "Windows":
+    CURRENT_OS = OSState.WINDOWS
+elif platform.system() == "Darwin":
+    CURRENT_OS = OSState.MACOS
+elif platform.system() == "Linux":
+    CURRENT_OS = OSState.LINUX
+
+if CURRENT_OS == OSState.WINDOWS:
+    SCREEN_X = 1280
+    SCREEN_Y = 800
+elif CURRENT_OS == OSState.MACOS:
+    SCREEN_X = 800
+    SCREEN_Y = 600
+
 SCREEN_SIZE = (SCREEN_X, SCREEN_Y)
 GAME_TITLE = "Under Construction"
 
@@ -31,17 +44,10 @@ FPS = 60
 CLOCK = pygame.time.Clock()
 
 REFRESH_COLOR = cs.black["pygame"]
-# Will be useful for distros
-if platform.system() == "Windows":
-    CURRENT_OS = OSState.WINDOWS
-elif platform.system() == "Darwin":
-    CURRENT_OS = OSState.MACOS
-elif platform.system() == "Linux":
-    CURRENT_OS = OSState.LINUX
 
 
 player = actor.Actor(WINDOW, SCREEN_X / 2 , SCREEN_Y / 2, isPlayer = True)
-current_level = level.Level(WINDOW, 100, 100)
+current_level = level.Level(WINDOW, 100, 0)
 
 def run_game():
 

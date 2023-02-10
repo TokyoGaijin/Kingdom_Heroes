@@ -16,22 +16,17 @@ class Level(object):
                            "----WWFFFFFFFWW-----",
                            "------WWFFFWW-------",
                            "------WWFFFWW-------",
-                           "---WWWWWFFFWWWWW----",
-                           "---WWFFFFFFFFFWW----",
-                           "---WWFFFFFFFFFWW----",
-                           "---WWFFFFFFFFFWW----",
-                           "---WWWWFFFFFWWWW----",
+                           "---WWWWWFFFWWWW-----",
+                           "---WWFFFFFFFFWW-----",
+                           "---WWFFFFFFFFWW-----",
+                           "---WWFFFFFFFFWW-----",
+                           "---WWWWFFFFWWWW-----",
                            "-----WWFFFFWW-------",
-                           "-----WWFFFFWW-------",
-                           "-----WWFFFFWW-------",
-                           "-----WWFFFFWW-------",
-                           "--WWWWFFFFFFWWWW----",
+                           "----WWWFFFFWWW------",
                            "--WWFFFFFFFFFFWW----",
                            "--WWFFFFFFFFFFWW----",
                            "--WWFFFFFFFFFFWW----",
-                           "--WWWWWWWWWWWWWW----",
-                           "--WWWWWWWWWWWWWW----",
-                           "--------------------"],]
+                           "--WWWWWWWWWWWWWW----"],]
 
         # TODO: Add wider levels and readjust the height of each level to fit the screen perfectly.
         # TODO: Create separate objects for walls vs. floors and so-on to allow the player collisions
