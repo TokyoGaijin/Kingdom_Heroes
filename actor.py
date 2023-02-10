@@ -29,7 +29,8 @@ class Actor(object):
         self.walk_up = [pygame.image.load(os.path.join("sprites/human", f"{self.gender}_walk_up_{i}.png")) for i in range(0, 3)]
         self.walk_down = [pygame.image.load(os.path.join("sprites/human", f"{self.gender}_walk_down_{i}.png")) for i in range(0, 3)]
 
-        # TODO: Create conditions for actor facing if isPlayer
+        self.current_direction = "down"
+
         # TODO: Create enemy conditions for battle
         # TODO: Create an inventory array/list
 
@@ -73,7 +74,7 @@ class Actor(object):
 
         self.bounding_block.x = self.posX
         self.bounding_block.y = self.posY
-
+        self.current_direction = direction
 
 
     def on_release_movekey(self, key):
@@ -114,4 +115,12 @@ class Actor(object):
 
     def draw(self):
         if not self.isMoving:
-            self.surface.blit(self.actor_sprite, (self.posX, self.posY))
+            # self.surface.blit(self.actor_sprite, (self.posX, self.posY))
+            if self.current_direction == "down":
+                self.surface.blit(self.actor_sprite, (self.posX, self.posY))
+            if self.current_direction == "up":
+                self.surface.blit(self.walk_up[1], (self.posX, self.posY))
+            if self.current_direction == "left":
+                self.surface.blit(pygame.transform.flip(self.walk_x[1], True, False), (self.posX, self.posY))
+            if self.current_direction == "right":
+                self.surface.blit(self.walk_x[1], (self.posX, self.posY))
